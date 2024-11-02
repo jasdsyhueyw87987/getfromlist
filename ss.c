@@ -1,3 +1,4 @@
+sudo apt-get install libwebkit2gtk-4.0-dev
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
 
