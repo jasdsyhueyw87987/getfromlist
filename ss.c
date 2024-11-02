@@ -1,4 +1,6 @@
 sudo apt-get install libwebkit2gtk-4.0-dev
+gcc `pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.0` -o webkit_example webkit_example.c
+
 #include <gtk/gtk.h>
 #include <webkit2/webkit2.h>
 
