@@ -1,8 +1,22 @@
-curl -X GET "https://api.screenshotapi.net/screenshot?token=YOUR_API_KEY&url=https://acas.edu.bd&width=1920&height=1080&output=image" \
-  -H "origin: https://acas.edu.bd" \
-  -H "referer: https://acas.edu.bd/" \
-  -H "sec-ch-ua: \"Chromium\";v=\"130\", \"Brave\";v=\"130\", \"Not?A_Brand\";v=\"99\"" \
-  -H "sec-ch-ua-mobile: ?0" \
-  -H "sec-ch-ua-platform: \"Windows\"" \
-  -H "user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36" \
-  -o screenshot.png
+#include <gtk/gtk.h>
+#include <webkit2/webkit2.h>
+
+int main(int argc, char *argv[]) {
+    gtk_init(&argc, &argv);
+
+    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), "WebKitGTK Example");
+    gtk_window_set_default_size(GTK_WINDOW(window), 800, 600);
+
+    WebKitWebView *web_view = WEBKIT_WEB_VIEW(webkit_web_view_new());
+    gtk_container_add(GTK_CONTAINER(window), GTK_WIDGET(web_view));
+    
+    // Load a URL
+    webkit_web_view_load_uri(web_view, "https://acas.edu.bd");
+
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    gtk_widget_show_all(window);
+
+    gtk_main();
+    return 0;
+}
