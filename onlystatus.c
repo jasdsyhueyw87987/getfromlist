@@ -43,6 +43,9 @@ int main(int argc, char *argv[]) {
         // Set the URL
         curl_easy_setopt(curl, CURLOPT_URL, url);
 
+        // Set to not download the body
+        curl_easy_setopt(curl, CURLOPT_NOBODY, 1L);
+
         // Set custom headers
         struct curl_slist *headers = NULL;
         headers = curl_slist_append(headers, "origin: https://acas.edu.bd");
